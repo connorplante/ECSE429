@@ -61,11 +61,13 @@ def step_impl(context, task, category):
     url = f'http://localhost:4567/categories/{category}/todos'
     response = requests.get(url)
     category_to_todo = False
+    print(response.json())
     for i in response.json()["todos"]:
         if (i["id"] == task):
             category_to_todo = True
             break
         
+    print(category_to_todo, todo_to_category)
     assert category_to_todo and todo_to_category
 
 @then('there will be no association between the task {task} and the priority {category}')

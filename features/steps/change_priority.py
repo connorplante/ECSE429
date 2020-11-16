@@ -33,6 +33,4 @@ def step_impl(context, task, category):
 
 @then('a 404 status code will be returned with an error message')
 def step_impl(context):
-    print(context.response.json()["errorMessages"])
-    print(context.response.status_code)
     assert context.response.status_code == 404 and context.response.json()["errorMessages"]

@@ -15,7 +15,7 @@ def before_scenario(context, scenario):
     if (tryPort(4567)):
         raise Exception("Application is not running on port 4567")
     
-    # adding categories id  = 3,4,5,6
+    # adding categories id  = 3,4,5
     if ("priority" in context.tags):
         url = 'http://localhost:4567/categories'
         data = '''{
@@ -30,10 +30,21 @@ def before_scenario(context, scenario):
         "title": "LOW"
         }'''
         response = requests.post(url, data=data) # 5
-    # data = '''{
-    # "title": "Physics Course"
-    # }'''
-    # response = requests.post(url, data=data) # 6
+
+    if ("course" in context.tags):
+        url = 'http://localhost:4567/categories'
+        data = '''{
+        "title": "Physics Course"
+        }'''
+        response = requests.post(url, data=data) 
+        data = '''{
+        "title": "Math Course"
+        }'''
+        response = requests.post(url, data=data) 
+        data = '''{
+        "title": "English Course"
+        }'''
+        response = requests.post(url, data=data) 
 
     # adding todo id = 3,4,5,6
     if ("task" in context.tags):
