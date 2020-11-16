@@ -12,7 +12,7 @@ def before_scenario(context, scenario):
     # start application
     jar_path = os.getcwd() + '/runTodoManagerRestAPI-1.5.5.jar'
 
-    subprocess.Popen(['java', '-jar', jar_path, '&>',  '/dev/null'],
+    subprocess.Popen(['java', '-jar', jar_path],
                         stdout=subprocess.DEVNULL, 
                         stderr=subprocess.STDOUT)
 
