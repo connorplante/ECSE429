@@ -57,7 +57,7 @@ def before_scenario(context, scenario):
         response = requests.post(url, data=data) # 3
         data = '''{
             "title": "Assignment4",
-            "doneStatus": false,
+            "doneStatus": true,
             "description": "write poem"
         }'''
         response = requests.post(url, data=data) # 4
@@ -69,10 +69,26 @@ def before_scenario(context, scenario):
         response = requests.post(url, data=data) # 5
         data = '''{
             "title": "Assignment6",
-            "doneStatus": true,
+            "doneStatus": false,
             "description": "do math"
         }'''
         response = requests.post(url, data=data) # 6, done
+
+    if ("link_task_course" in context.tags and "course" in context.tags and "task" in context.tags):
+        url = 'http://localhost:4567/categories/3/todos'
+        data = '''{
+            "id": "3"
+        }'''
+        response = requests.post(url, data=data)
+        data = '''{
+            "id": "4"
+        }'''
+        response = requests.post(url, data=data)
+        data = '''{
+            "id": "5"
+        }'''
+        response = requests.post(url, data=data)
+
 
 def after_scenario(context, scenario):
     try:
