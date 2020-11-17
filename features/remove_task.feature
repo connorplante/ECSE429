@@ -16,7 +16,7 @@ Scenario Outline: Remove an existing task from a course todo list (Normal Flow)
         | 4     | 3         | 
         | 5     | 3         | 
 
-@course 
+@course @task
 Scenario Outline: Remove an existing task from a course todo list (Alternate Flow)
     Given a relationship exists from course to do list <category> to task <task>
     When the user deletes the relationship between the course to do list <category> and task <task>
@@ -29,7 +29,7 @@ Scenario Outline: Remove an existing task from a course todo list (Alternate Flo
         | 5     | 3         | 
 
 
-@course
+@course @task
 Scenario Outline: Remove a non existent task from a course todo list (Error Flow)
     Given a course todo list <course> exists
     When the user removes a task <task> that does not exist from course to do list <course>
