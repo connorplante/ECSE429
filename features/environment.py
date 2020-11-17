@@ -3,14 +3,20 @@ import requests
 import socket
 import subprocess
 import time
+import os
 
 def before_all(context):
     context.config.setup_logging()
 
 def before_scenario(context, scenario):
     # start application
-    subprocess.Popen(['java -jar /Users/connorplante/Documents/ECSE429/Project_B/runTodoManagerRestAPI-1.5.5.jar &> /dev/null'], shell=True)
-    time.sleep(0.5)
+    jar_path = os.getcwd() + '/runTodoManagerRestAPI-1.5.5.jar'
+
+    subprocess.Popen(['java', '-jar', jar_path],
+                        stdout=subprocess.DEVNULL, 
+                        stderr=subprocess.STDOUT)
+
+    time.sleep(1)
     # check if application is running  
     if (tryPort(4567)):
         raise Exception("Application is not running on port 4567")
