@@ -94,7 +94,22 @@ def before_scenario(context, scenario):
             "id": "5"
         }'''
         response = requests.post(url, data=data)
-
+    if ("link_task_priority" in context.tags and "priority" in context.tags and "task" in context.tags):
+        url = 'http://localhost:4567/categories/3/todos'
+        data = '''{
+            "id": "3"
+        }'''
+        response = requests.post(url, data=data)
+        url = 'http://localhost:4567/categories/3/todos'
+        data = '''{
+            "id": "4"
+        }'''
+        response = requests.post(url, data=data)
+        url = 'http://localhost:4567/categories/4/todos'
+        data = '''{
+            "id": "5"
+        }'''
+        response = requests.post(url, data=data)
 
 def after_scenario(context, scenario):
     try:
